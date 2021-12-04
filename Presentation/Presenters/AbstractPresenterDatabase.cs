@@ -1,6 +1,7 @@
 ﻿using Core;
 using DatabaseModels;
 using Presentation.Interfaces;
+using Presentation.Presenters.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,25 +10,21 @@ using System.Threading.Tasks;
 
 namespace Presentation.Presenters
 {
-    public abstract class AbstractPresenterDatabase<TView, T>
-        where TView : IViewDatabase<T>
+    public abstract class AbstractPresenterDatabase<T> : AbstractPresenter, IDatabasePresenter<T>
         where T : BaseEntity
     {
-        private readonly TView _view;
+        private readonly IViewDatabase<T> _view;
         private readonly IRepositoryAsync<T> _repository;
 
-        public AbstractPresenterDatabase(TView view, IRepositoryAsync<T> repository)
+        public AbstractPresenterDatabase(IViewDatabase<T> view, IRepositoryAsync<T> repository)
         {
             _repository = repository;
             _view = view;
         }
 
-        public virtual void OnViewInitialized()
-        {
-        }
-
-        public virtual void OnViewLoaded()
-        {
-        }
+        public abstract void OnCreateClick();
+        public abstract void OnDeleteClick();
+        public abstract void OnReloadDataClick();
+        public abstract void OnUpdateClick();
     }
 }

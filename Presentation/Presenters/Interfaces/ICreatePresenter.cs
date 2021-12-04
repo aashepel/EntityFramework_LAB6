@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Presentation.Interfaces
+namespace Presentation.Presenters.Interfaces
 {
-    public interface IStudentView : IViewDatabase<Student>
+    interface ICreatePresenter<T> : IPresenter where T : BaseEntity
     {
-        void GetCuratorName(int id);
+        Task OnCreateClickAsync();
     }
 }

@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Presentation.Interfaces
+namespace Presentation.Presenters
 {
-    public interface IView
+    public class AbstractUpdatePresenter
     {
-
     }
 }

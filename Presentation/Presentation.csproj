@@ -18,7 +18,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\" />
+    <Folder Include="Presenters\Groups\" />
+    <Folder Include="Presenters\Curatrors\" />
+    <Folder Include="Views\Interfaces\" />
+    <Folder Include="Views\Students\" />
   </ItemGroup>
 
 </Project>

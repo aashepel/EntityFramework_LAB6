@@ -9,10 +9,9 @@ namespace Presentation.Interfaces
 {
     public interface IViewDatabase<T> : IView where T : BaseEntity
     {
-        void LoadAllEntites();
-        void LoadById(int id);
-        void Create(T entity);
-        void Update(T entity);
-        void Delete(int id);
+        event Action CreateClick;
+        event Action DeleteClick;
+        event Action UpdateClick;
+        event Action ReloadClick;
     }
 }
