@@ -9,16 +9,22 @@ using System.Threading.Tasks;
 
 namespace DatabaseModels
 {
-    public class Group
+    public class Group : BaseEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public override int Id { get; set; }
+
+        public int CuratorId { get; set; }
+
+        public virtual Curator Curator { get; set; }
         
         [NotNull]
         public string Name { get; set; }
 
         [NotNull]
         public DateTime CreationDate { get; set; }
+
+        public virtual ICollection<Student> Students { get; set; }
     }
 }

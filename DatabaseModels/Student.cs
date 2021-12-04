@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace DatabaseModels
 {
-    public class Student
+    public class Student : BaseEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id {  get; set; }
+        public override int Id {  get; set; }
 
         [NotNull]
         public int GroupId { get; set; }

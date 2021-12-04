@@ -9,16 +9,16 @@ using System.Threading.Tasks;
 
 namespace DatabaseModels
 {
-    public class Curator
+    public class Curator : BaseEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public override int Id { get; set; }
 
         [NotNull]
         public int GroupId { get; set; }
 
-        public Group Group {  get; set; }
+        public virtual Group Group {  get; set; }
 
         [NotNull]
         public string Name {  get; set; }
