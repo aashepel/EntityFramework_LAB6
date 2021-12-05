@@ -14,17 +14,13 @@ namespace DatabaseModels
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public override int Id { get; set; }
-
-        public int CuratorId { get; set; }
-
-        public virtual Curator Curator { get; set; }
         
-        [NotNull]
+        [Required]
+        [MaxLength(100)]
+        [MinLength(2)]
         public string Name { get; set; }
 
-        [NotNull]
-        public DateTime CreationDate { get; set; }
-
-        public virtual ICollection<Student> Students { get; set; }
+        [Required]
+        public string CreationDate { get; set; }
     }
 }

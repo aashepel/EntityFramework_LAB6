@@ -15,15 +15,17 @@ namespace DatabaseModels
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public override int Id { get; set; }
 
-        [NotNull]
+        [Required]
         public int GroupId { get; set; }
 
         public virtual Group Group {  get; set; }
 
-        [NotNull]
+        [Required]
+        [MinLength(2)]
+        [MaxLength(150)]
         public string Name {  get; set; }
 
-        [EmailAddress, NotNull]
+        [EmailAddress, Required]
         public string Email { get; set; }
     }
 }

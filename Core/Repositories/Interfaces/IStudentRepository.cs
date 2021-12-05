@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Core.Repositories.Interfaces
 {
-    public interface IStudentRepository : IRepositoryAsync<Student>
+    public interface IStudentRepository : IRepository<Student>
     {
-        public Task<string> GetCuratorNameOfStudent(int studentId);
+        public string GetCuratorNameOfStudent(int studentId);
     }
 }

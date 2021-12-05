@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Core.Repositories.Interfaces
 {
-    public interface ICuratorRepository : IRepositoryAsync<Curator>
+    public interface ICuratorRepository : IRepository<Curator>
     {
 
     }

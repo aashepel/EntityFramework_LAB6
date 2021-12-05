@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Presentation.Views.Shared;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,5 +11,7 @@ namespace Presentation.Presenters.Interfaces
     {
         void ShowErrorMessage(string message);
         void ShowInfoMessage(string message);
+        void Show();
+        void Close();
     }
 }

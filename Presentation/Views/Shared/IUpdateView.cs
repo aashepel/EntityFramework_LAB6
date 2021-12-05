@@ -5,9 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Presentation.Presenters.Interfaces
+namespace Presentation.Views.Shared
 {
-    public interface IUpdatePresenter<T> : IPresenter where T : BaseEntity
+    public interface IUpdateView<T> : IView where T : BaseEntity
     {
+        event Action UpdateClick;
     }
 }

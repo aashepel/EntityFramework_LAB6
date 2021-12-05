@@ -1,7 +1,10 @@
 ﻿using Core;
+using DatabaseContext;
 using DatabaseModels;
+using Microsoft.Extensions.DependencyInjection;
 using Presentation.Interfaces;
 using Presentation.Presenters.Interfaces;
+using Presentation.Views.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,18 +16,27 @@ namespace Presentation.Presenters
     public abstract class AbstractPresenterDatabase<T> : AbstractPresenter, IDatabasePresenter<T>
         where T : BaseEntity
     {
-        private readonly IViewDatabase<T> _view;
-        private readonly IRepositoryAsync<T> _repository;
+        protected readonly IRepository<T> _repository;
 
-        public AbstractPresenterDatabase(IViewDatabase<T> view, IRepositoryAsync<T> repository)
+        public AbstractPresenterDatabase(IViewDatabase<T> view, IRepository<T> repository) : base(view)
         {
             _repository = repository;
-            _view = view;
+
+            view.CreateClick += OnCreateClick;
+            view.DeleteClick += OnDeleteClick;
+            view.UpdateClick += OnUpdateClick;
+            view.LoadClick += OnLoadDataClick;
         }
 
+        protected override IViewDatabase<T> View => base.View as IViewDatabase<T>;
+
+        public virtual ICollection<T> LoadAllRecords()
+        {
+            return _repository.GetAll();
+        }
         public abstract void OnCreateClick();
         public abstract void OnDeleteClick();
-        public abstract void OnReloadDataClick();
+        public abstract void OnLoadDataClick();
         public abstract void OnUpdateClick();
     }
 }

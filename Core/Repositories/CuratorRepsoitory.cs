@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Core.Repositories
 {
-    public class CuratorRepsoitory : RepositoryGenericAsync<Curator>, ICuratorRepository
+    public class CuratorRepsoitory : RepositoryGeneric<Curator>, ICuratorRepository
     {
         public CuratorRepsoitory(ApplicationDbContext context) : base(context)
         {

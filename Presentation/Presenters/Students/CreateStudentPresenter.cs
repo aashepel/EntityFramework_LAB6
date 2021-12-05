@@ -1,7 +1,9 @@
 ﻿using Core.Repositories.Interfaces;
 using DatabaseModels;
+using Presentation.Presenters.CRUD;
 using Presentation.Presenters.Interfaces;
 using Presentation.Views.Shared;
+using Presentation.Views.Students.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,30 +12,50 @@ using System.Threading.Tasks;
 
 namespace Presentation.Presenters.Students
 {
-    public class CreateStudentPresenter : AbstractPresenter, ICreatePresenter<Student>
+    public sealed class CreateStudentPresenter : AbstractCreatePresenter<Student>
     {
-        private readonly ICreateView<Student> _view;
-        private readonly IStudentRepository _repository;
-
-        private Student _student = new Student();
-
-        public CreateStudentPresenter(ICreateView<Student> view, IStudentRepository repository)
+        private readonly IGroupRepository _groupRepository;
+        private string _nameGroup = "";
+        public CreateStudentPresenter(ICreateStudentView view, IStudentRepository repository, IGroupRepository groupRepository) 
+            : base(view, repository)
         {
-            _view = view;
-            _repository = repository;
+            _groupRepository = groupRepository;
+
+            view.AgeChange += OnAgeChanged;
+            view.NameChange += OnNameChanged;
+            view.GroupChange += (string nameGroup) =>  OnGroupChanged(nameGroup);
+            view.SetComboBoxGroups(_groupRepository.GetAll());
         }
 
-        public async Task OnCreateClickAsync()
+        public override bool IsValidParams()
         {
-            try
-            {
-                await _repository.CreateAsync(_student);
-            }
-            catch (Exception ex)
-            {
-                ShowErrorMessage(ex);
-            }
+            return true;
+        }
 
+        public void OnAgeChanged(uint age)
+        {
+            _entity.Age = age;
+        }
+
+        public void OnNameChanged(string name)
+        {
+            _entity.Name = name;
+        }
+
+        public void OnGroupChanged(string nameGroup)
+        {
+            _nameGroup = nameGroup;
+        }
+
+        protected override void OnCreateClick()
+        {
+            _entity.GroupId = _groupRepository.GetByName(_nameGroup).Id;
+            base.OnCreateClick();
+        }
+
+        protected override void ClearAllFields()
+        {
+            (_view as ICreateView<Student>).ClearAllFields();
         }
     }
 }

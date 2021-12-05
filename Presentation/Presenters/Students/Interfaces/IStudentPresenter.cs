@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DatabaseModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace Presentation.Presenters.Interfaces
 {
-    interface IStudentPresenter
+    public interface IStudentPresenter : IDatabasePresenter<Student>
     {
-        void OnCreateClick();
-        void 
+
     }
 }

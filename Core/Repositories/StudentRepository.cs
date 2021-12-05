@@ -10,17 +10,23 @@ using System.Threading.Tasks;
 
 namespace Core.Repositories
 {
-    public class StudentRepository : RepositoryGenericAsync<Student>, IStudentRepository
+    public class StudentRepository : RepositoryGeneric<Student>, IStudentRepository
     {
         public StudentRepository(ApplicationDbContext context) : base(context)
         {
         }
 
-        public async Task<string> GetCuratorNameOfStudent(int studentId)
+        public override ICollection<Student> GetAll()
         {
-            var student = await _context.Set<Student>().Include(p => p.Group).ThenInclude(p => p.Curator).FirstOrDefaultAsync();
+            return _context.Set<Student>().Include(p => p.Group).ToList();
+        }
+
+        public string GetCuratorNameOfStudent(int studentId)
+        {
+            var student = _context.Set<Student>().FirstOrDefault();
             if (student == null) throw new ArgumentNullException(nameof(student));
-            return student.Group.Curator.Name;
+            var curator = _context.Set<Curator>().FirstOrDefault(p => p.GroupId == student.GroupId);
+            return curator?.Name;
         }
     }
 }

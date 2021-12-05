@@ -1,14 +1,15 @@
 ﻿using DatabaseModels;
+using Presentation.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Presentation.Presenters.Interfaces
+namespace Presentation.Views.Students.Interfaces
 {
-    interface ICreatePresenter<T> : IPresenter where T : BaseEntity
+    public interface IStudentView : IViewDatabase<Student>
     {
-        Task OnCreateClickAsync();
+        
     }
 }

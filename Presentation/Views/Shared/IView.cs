@@ -8,9 +8,7 @@ namespace Presentation.Views.Shared
 {
     public interface IView
     {
-        void ShowErrorMessage(string message);
-        void ShowInfoMessage(string message);
-        void ShowSuccessMessage(string message);
-        void ShowWarningMessage(string message);
+        void Show();
+        void Close();
     }
 }

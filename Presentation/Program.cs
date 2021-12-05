@@ -1,3 +1,9 @@
+using Core.Repositories;
+using Core.Repositories.Interfaces;
+using DatabaseContext;
+using Microsoft.Extensions.DependencyInjection;
+using Presentation;
+using Presentation.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +23,21 @@ namespace EntityFramework_LAB6
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            Application.Run(new MainForm(AppServices.Instance.ServiceProvider.GetService<ApplicationDbContext>()));
+
+            //var services = new ServiceCollection();
+
+            //ConfigureServices(services);
+
+            //using (ServiceProvider serviceProvider = services.BuildServiceProvider())
+            //{
+            //    var mainForm = serviceProvider.GetService<MainForm>();
+            //    if (mainForm != null)
+            //        Application.Run(mainForm);
+            //    else
+            //        HandleError.ShowMessageError("Не удалось запустить программу");
+            //}
         }
     }
 }

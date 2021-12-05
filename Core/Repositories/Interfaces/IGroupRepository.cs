@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace Core.Repositories.Interfaces
 {
-    public interface IGroupRepository : IRepositoryAsync<Group>
+    public interface IGroupRepository : IRepository<Group>
     {
-        Task<uint> CountStudentsInGroup(int groupId);
-        Task<decimal> AvgAgeStudents(int curatorId);
+        uint CountStudentsInGroup(int groupId);
+        decimal AvgAgeStudents(int curatorId);
+        Group GetByName(string name);
     }
 }

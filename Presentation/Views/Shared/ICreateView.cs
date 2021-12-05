@@ -10,5 +10,6 @@ namespace Presentation.Views.Shared
     public interface ICreateView<T> : IView where T : BaseEntity
     {
         event Action CreateClick;
+        void ClearAllFields();
     }
 }

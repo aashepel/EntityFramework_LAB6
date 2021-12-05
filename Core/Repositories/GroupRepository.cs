@@ -10,24 +10,36 @@ using System.Threading.Tasks;
 
 namespace Core.Repositories
 {
-    public class GroupRepository : RepositoryGenericAsync<Group>, IGroupRepository
+    public class GroupRepository : RepositoryGeneric<Group>, IGroupRepository
     {
         public GroupRepository(ApplicationDbContext context) : base(context)
         {
         }
 
-        public async Task<uint> CountStudentsInGroup(int groupId)
+        public override void Create(Group entity)
         {
-            var group = await _context.Set<Group>().Include(p => p.Students).FirstOrDefaultAsync(p => p.Id == groupId);
-            if (group == null) throw new ArgumentNullException(nameof(group));
-            return (uint)group.Students.Count();
+            entity.CreationDate = DateTime.Now.ToShortDateString();
+            base.Create(entity);
         }
 
-        public async Task<decimal> AvgAgeStudents(int curatorId)
+        public uint CountStudentsInGroup(int groupId)
         {
-            var group = await _context.Set<Group>().Include(p => p.Students).FirstOrDefaultAsync(p => p.CuratorId == curatorId);
-            if (group == null) throw new ArgumentNullException(nameof(group));
-            return (decimal)Enumerable.Average(group.Students.Select(p => p.Age));
+            var students = _context.Set<Student>().Where(p => p.GroupId == groupId).ToList();
+            if (students == null) throw new ArgumentNullException(nameof(students));
+            return (uint)students.Count();
+        }
+
+        public decimal AvgAgeStudents(int curatorId)
+        {
+            var curator = _context.Set<Curator>().FirstOrDefault(p => p.Id == curatorId);
+            if (curator == null) throw new ArgumentNullException(nameof(curator));
+            var students = _context.Set<Student>().Where(p => p.GroupId == curator.GroupId).ToList();
+            return (decimal)Enumerable.Average((IEnumerable<int>)students.Select(p => p.Age));
+        }
+
+        public Group GetByName(string name)
+        {
+            return _context.Set<Group>().FirstOrDefault(p => p.Name == name);
         }
     }
 }
