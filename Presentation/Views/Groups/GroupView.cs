@@ -18,6 +18,7 @@ namespace Presentation.Views.Groups
         {
             InitializeComponent();
             button_create.Click += (s, e) => CreateClick?.Invoke();
+            button_loadData.Click += (s, e) => LoadClick?.Invoke();
         }
 
         public event Action CreateClick;
@@ -25,9 +26,13 @@ namespace Presentation.Views.Groups
         public event Action UpdateClick;
         public event Action LoadClick;
 
-        public void FillingTable(ICollection<Student> entites)
+        public void FillingTable(ICollection<Group> entites)
         {
-            throw new NotImplementedException();
+            dataGridView1.Rows.Clear();
+            foreach (var group in entites)
+            {
+                dataGridView1.Rows.Add(group.Id, group.Name, group.CreationDate);
+            }
         }
     }
 }

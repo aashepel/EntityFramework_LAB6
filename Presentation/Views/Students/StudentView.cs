@@ -30,11 +30,7 @@ namespace Presentation.Views.Students
             dataGridView1.Rows.Clear();
             foreach(var student in entites)
             {
-                dataGridView1.Rows.Add();
-                dataGridView1["ID", dataGridView1.RowCount - 1].Value = student.Id;
-                dataGridView1["Name", dataGridView1.RowCount - 1].Value = student.Name;
-                dataGridView1["Age", dataGridView1.RowCount - 1].Value = student.Age;
-                dataGridView1["Group", dataGridView1.RowCount - 1].Value = student.Group.Name;
+                dataGridView1.Rows.Add(student.Id, student.Name, student.Age, student.Group.Name);
             }
         }
     }

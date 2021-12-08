@@ -21,8 +21,6 @@ namespace DatabaseModels
         public virtual Group Group { get; set; }
 
         [Required]
-        [MinLength(2)]
-        [MaxLength(150)]
         public string Name { get; set; }
 
         [Required]

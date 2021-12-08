@@ -14,6 +14,7 @@ namespace Core
         protected readonly ApplicationDbContext _context;
         public RepositoryGeneric(ApplicationDbContext context)
         {
+            //_context = new ApplicationDbContext();
             _context = context ?? throw new ArgumentNullException(nameof(_context));
         }
 

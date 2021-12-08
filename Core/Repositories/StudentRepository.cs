@@ -18,6 +18,7 @@ namespace Core.Repositories
 
         public override ICollection<Student> GetAll()
         {
+            var students = _context.Set<Student>().ToList();
             return _context.Set<Student>().Include(p => p.Group).ToList();
         }
 

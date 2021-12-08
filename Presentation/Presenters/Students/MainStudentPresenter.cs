@@ -39,7 +39,7 @@ namespace Presentation.Presenters
 
         public override void OnLoadDataClick()
         {
-            View.FillingTable(_repository.GetAll());
+            (_view as IStudentView).FillingTable(_repository.GetAll());
         }
 
         public override void OnUpdateClick()

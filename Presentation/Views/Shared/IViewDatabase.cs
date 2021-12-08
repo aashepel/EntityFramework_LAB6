@@ -14,6 +14,6 @@ namespace Presentation.Interfaces
         event Action DeleteClick;
         event Action UpdateClick;
         event Action LoadClick;
-        void FillingTable(ICollection<Student> entites);
+        void FillingTable(ICollection<T> entites);
     }
 }

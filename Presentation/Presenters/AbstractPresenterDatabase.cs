@@ -28,15 +28,16 @@ namespace Presentation.Presenters
             view.LoadClick += OnLoadDataClick;
         }
 
-        protected override IViewDatabase<T> View => base.View as IViewDatabase<T>;
-
         public virtual ICollection<T> LoadAllRecords()
         {
             return _repository.GetAll();
         }
         public abstract void OnCreateClick();
         public abstract void OnDeleteClick();
-        public abstract void OnLoadDataClick();
+        public virtual void OnLoadDataClick()
+        {
+            (_view as IViewDatabase<T>).FillingTable(_repository.GetAll());
+        }
         public abstract void OnUpdateClick();
     }
 }

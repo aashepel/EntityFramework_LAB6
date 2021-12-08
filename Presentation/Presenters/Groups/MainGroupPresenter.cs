@@ -32,11 +32,6 @@ namespace Presentation.Presenters.Groups
             throw new NotImplementedException();
         }
 
-        public override void OnLoadDataClick()
-        {
-            throw new NotImplementedException();
-        }
-
         public override void OnUpdateClick()
         {
             throw new NotImplementedException();
