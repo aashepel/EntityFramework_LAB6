@@ -10,6 +10,5 @@ namespace Presentation.Presenters.Interfaces
         void OnUpdateClick();
         void OnDeleteClick();
         void OnLoadDataClick();
-        ICollection<T> LoadAllRecords();
     }
 }

@@ -1,4 +1,6 @@
 ﻿using Core;
+using Core.Repositories;
+using Core.Repositories.Interfaces;
 using DatabaseContext;
 using DatabaseModels;
 using Microsoft.Extensions.DependencyInjection;
@@ -27,12 +29,11 @@ namespace Presentation.Presenters
             view.UpdateClick += OnUpdateClick;
             view.LoadClick += OnLoadDataClick;
         }
-
-        public virtual ICollection<T> LoadAllRecords()
+        public virtual void OnCreateClick()
         {
-            return _repository.GetAll();
+            OnLoadDataClick();
         }
-        public abstract void OnCreateClick();
+
         public virtual void OnDeleteClick()
         {
             var IDs = (_view as IViewDatabase<T>).SelectedRowID();

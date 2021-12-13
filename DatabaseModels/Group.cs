@@ -11,6 +11,11 @@ namespace DatabaseModels
 {
     public class Group : BaseEntity
     {
+        public Group()
+        {
+            CreationDate = DateTime.Now.ToShortDateString();
+        }
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public override int Id { get; set; }
@@ -22,5 +27,13 @@ namespace DatabaseModels
 
         [Required]
         public string CreationDate { get; set; }
+
+        public override bool IsValid()
+        {
+            if (Name == null)
+                return false;
+
+            return true;
+        }
     }
 }

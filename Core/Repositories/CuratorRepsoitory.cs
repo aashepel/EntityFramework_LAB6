@@ -1,6 +1,7 @@
 ﻿using Core.Repositories.Interfaces;
 using DatabaseContext;
 using DatabaseModels;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,16 @@ namespace Core.Repositories
     {
         public CuratorRepsoitory() : base()
         {
+        }
+
+        public override ICollection<Curator> GetAll()
+        {
+            return _context.Curators.Include(p => p.Group).ToList();
+        }
+
+        public override Curator GetById(int id)
+        {
+            return _context.Set<Curator>().Include(p => p.Group).FirstOrDefault(p => p.Id == id);
         }
     }
 }

@@ -30,4 +30,10 @@
     <ProjectReference Include="..\DatabaseModels\DatabaseModels.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="Views\Curators\CuratorView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+
 </Project>

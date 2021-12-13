@@ -46,5 +46,12 @@ namespace EntityFramework_LAB6
             IDatabasePresenter<Group> databasePresenter = new MainGroupPresenter(groupView, groupRepository);
             groupView.Show();
         }
+
+        private void button_curators_Click(object sender, EventArgs e)
+        {
+            CuratorView curatorView = new CuratorView();
+            ICuratorRepository curatorRepository = new CuratorRepsoitory();
+            IDatabasePresenter<Curator>> databasePresenter = new MainCuratorPresenter()
+        }
     }
 }

@@ -31,6 +31,7 @@ namespace EntityFramework_LAB6
         {
             this.button_students = new System.Windows.Forms.Button();
             this.button_groups = new System.Windows.Forms.Button();
+            this.button_curators = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button_students
@@ -53,11 +54,22 @@ namespace EntityFramework_LAB6
             this.button_groups.UseVisualStyleBackColor = true;
             this.button_groups.Click += new System.EventHandler(this.button_groups_Click);
             // 
+            // button_curators
+            // 
+            this.button_curators.Location = new System.Drawing.Point(174, 12);
+            this.button_curators.Name = "button_curators";
+            this.button_curators.Size = new System.Drawing.Size(75, 23);
+            this.button_curators.TabIndex = 2;
+            this.button_curators.Text = "Curators";
+            this.button_curators.UseVisualStyleBackColor = true;
+            this.button_curators.Click += new System.EventHandler(this.button_curators_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button_curators);
             this.Controls.Add(this.button_groups);
             this.Controls.Add(this.button_students);
             this.Name = "MainForm";
@@ -70,6 +82,7 @@ namespace EntityFramework_LAB6
 
         private System.Windows.Forms.Button button_students;
         private System.Windows.Forms.Button button_groups;
+        private System.Windows.Forms.Button button_curators;
     }
 }
 

@@ -27,5 +27,19 @@ namespace DatabaseModels
 
         [EmailAddress, Required]
         public string Email { get; set; }
+
+        public override bool IsValid()
+        {
+            if (Name == null)
+                return false;
+
+            if (Email == null)
+                return false;
+
+            if (Name.Length > 150 || Name.Length < 2)
+                return false;
+
+            return true;
+        }
     }
 }

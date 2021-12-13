@@ -32,6 +32,7 @@ namespace Presentation.Presenters
             IGroupRepository groupRepository = new GroupRepository();
             CreateStudentPresenter createStudentPresenter = new CreateStudentPresenter(createStudentView, studentRepository, groupRepository);
             createStudentView.Show();
+            base.OnCreateClick();
         }
 
         public override void OnUpdateClick()
