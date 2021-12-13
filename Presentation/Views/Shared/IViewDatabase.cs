@@ -15,5 +15,6 @@ namespace Presentation.Interfaces
         event Action UpdateClick;
         event Action LoadClick;
         void FillingTable(ICollection<T> entites);
+        List<int> SelectedRowID();
     }
 }

@@ -23,6 +23,7 @@ namespace Presentation.Views.Students
             InitializeComponent();
             button_createStudent.Click += (s, e) => CreateClick?.Invoke();
             button_loadData.Click += (s, e) => LoadClick?.Invoke();
+            button_Delete.Click += (s, e) => DeleteClick?.Invoke();
         }
 
         public void FillingTable(ICollection<Student> entites)
@@ -32,6 +33,19 @@ namespace Presentation.Views.Students
             {
                 dataGridView1.Rows.Add(student.Id, student.Name, student.Age, student.Group.Name);
             }
+        }
+
+        public List<int> SelectedRowID()
+        {
+            var selectedRows = dataGridView1.SelectedRows;
+            List<int> IDs = new List<int>();
+            for (int i = 0; i < selectedRows.Count; i++)
+            {
+                var value = selectedRows[i].Cells["ID"].Value;
+                if (value != null)
+                    IDs.Add((int)value);
+            }
+            return IDs;
         }
     }
 }

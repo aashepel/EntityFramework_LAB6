@@ -19,6 +19,7 @@ namespace Presentation.Views.Groups
             InitializeComponent();
             button_create.Click += (s, e) => CreateClick?.Invoke();
             button_loadData.Click += (s, e) => LoadClick?.Invoke();
+            button_delete.Click += (s, e) => DeleteClick?.Invoke();
         }
 
         public event Action CreateClick;
@@ -33,6 +34,17 @@ namespace Presentation.Views.Groups
             {
                 dataGridView1.Rows.Add(group.Id, group.Name, group.CreationDate);
             }
+        }
+
+        public List<int> SelectedRowID()
+        {
+            var selectedRows = dataGridView1.SelectedRows;
+            List<int> IDs = new List<int>();
+            for (int i = 0; i < selectedRows.Count; i++)
+            {
+                IDs.Add((int)selectedRows[i].Cells["ID"].Value);
+            }
+            return IDs;
         }
     }
 }

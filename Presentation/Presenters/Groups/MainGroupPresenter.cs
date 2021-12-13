@@ -1,4 +1,5 @@
 ﻿using Core;
+using Core.Repositories;
 using Core.Repositories.Interfaces;
 using DatabaseModels;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,18 +19,15 @@ namespace Presentation.Presenters.Groups
     {
         public MainGroupPresenter(IViewDatabase<Group> view, IRepository<Group> repository) : base(view, repository)
         {
+
         }
 
         public override void OnCreateClick()
         {
             ICreateGroupView createGuropView = new CreateGroupView();
-            CreateGroupPresenter createGroupPresenter = new CreateGroupPresenter(createGuropView, AppServices.Instance.ServiceProvider.GetService<IGroupRepository>());
+            IGroupRepository groupRepository = new GroupRepository();
+            CreateGroupPresenter createGroupPresenter = new CreateGroupPresenter(createGuropView, groupRepository);
             createGroupPresenter.Show();
-        }
-
-        public override void OnDeleteClick()
-        {
-            throw new NotImplementedException();
         }
 
         public override void OnUpdateClick()

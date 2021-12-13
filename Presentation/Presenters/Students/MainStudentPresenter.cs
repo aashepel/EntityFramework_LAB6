@@ -28,18 +28,10 @@ namespace Presentation.Presenters
         public override void OnCreateClick()
         {
             ICreateStudentView createStudentView = new CreateStudentView();
-            CreateStudentPresenter createStudentPresenter = new CreateStudentPresenter(createStudentView, AppServices.Instance.ServiceProvider.GetService<IStudentRepository>(), AppServices.Instance.ServiceProvider.GetService<IGroupRepository>());
+            IStudentRepository studentRepository= new StudentRepository();
+            IGroupRepository groupRepository = new GroupRepository();
+            CreateStudentPresenter createStudentPresenter = new CreateStudentPresenter(createStudentView, studentRepository, groupRepository);
             createStudentView.Show();
-        }
-
-        public override void OnDeleteClick()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void OnLoadDataClick()
-        {
-            (_view as IStudentView).FillingTable(_repository.GetAll());
         }
 
         public override void OnUpdateClick()

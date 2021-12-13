@@ -12,10 +12,9 @@ namespace Core
     public abstract class RepositoryGeneric<T> : IRepository<T> where T : BaseEntity
     {
         protected readonly ApplicationDbContext _context;
-        public RepositoryGeneric(ApplicationDbContext context)
+        public RepositoryGeneric()
         {
-            //_context = new ApplicationDbContext();
-            _context = context ?? throw new ArgumentNullException(nameof(_context));
+            _context = new ApplicationDbContext();
         }
 
         public ApplicationDbContext Context => _context;

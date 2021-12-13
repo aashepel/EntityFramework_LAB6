@@ -12,7 +12,7 @@ namespace Core.Repositories
 {
     public class StudentRepository : RepositoryGeneric<Student>, IStudentRepository
     {
-        public StudentRepository(ApplicationDbContext context) : base(context)
+        public StudentRepository() : base()
         {
         }
 

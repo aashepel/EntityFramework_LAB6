@@ -11,7 +11,7 @@ namespace Core.Repositories
 {
     public class CuratorRepsoitory : RepositoryGeneric<Curator>, ICuratorRepository
     {
-        public CuratorRepsoitory(ApplicationDbContext context) : base(context)
+        public CuratorRepsoitory() : base()
         {
         }
     }

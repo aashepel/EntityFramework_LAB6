@@ -16,7 +16,7 @@ namespace Presentation.Views.Groups
         public CreateGroupView()
         {
             InitializeComponent();
-            textBox_name.TextChanged += (s, e) => NameChange?.Invoke(s as string);
+            textBox_name.TextChanged += (s, e) => NameChange?.Invoke(textBox_name.Text);
             button_create.Click += (s, e) => CreateClick?.Invoke();
         }
 

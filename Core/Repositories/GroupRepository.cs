@@ -12,7 +12,7 @@ namespace Core.Repositories
 {
     public class GroupRepository : RepositoryGeneric<Group>, IGroupRepository
     {
-        public GroupRepository(ApplicationDbContext context) : base(context)
+        public GroupRepository() : base()
         {
         }
 

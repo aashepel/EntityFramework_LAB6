@@ -24,7 +24,7 @@ namespace EntityFramework_LAB6
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Application.Run(new MainForm(AppServices.Instance.ServiceProvider.GetService<ApplicationDbContext>()));
+            Application.Run(new MainForm());
 
             //var services = new ServiceCollection();
 

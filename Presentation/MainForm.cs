@@ -25,7 +25,7 @@ namespace EntityFramework_LAB6
 {
     public partial class MainForm : Form
     {
-        public MainForm(ApplicationDbContext context)
+        public MainForm()
         {
             InitializeComponent();
         }
@@ -34,14 +34,16 @@ namespace EntityFramework_LAB6
         {
             
             StudentView studentView = new StudentView();
-            IDatabasePresenter<Student> databasePresenter = new MainStudentPresenter(studentView, AppServices.Instance.ServiceProvider.GetService<IStudentRepository>());
+            IStudentRepository studentRepository = new StudentRepository();
+            IDatabasePresenter<Student> databasePresenter = new MainStudentPresenter(studentView, studentRepository);
             studentView.Show();
         }
 
         private void button_groups_Click(object sender, EventArgs e)
         {
             GroupView groupView = new GroupView();
-            IDatabasePresenter<Group> databasePresenter = new MainGroupPresenter(groupView, AppServices.Instance.ServiceProvider.GetService<IGroupRepository>());
+            IGroupRepository groupRepository = new GroupRepository();
+            IDatabasePresenter<Group> databasePresenter = new MainGroupPresenter(groupView, groupRepository);
             groupView.Show();
         }
     }

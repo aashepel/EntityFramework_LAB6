@@ -32,17 +32,22 @@ namespace Presentation.Presenters
 
         public virtual void ShowErrorMessage(string message)
         {
-            HandleError.ShowMessageError(message);
+            MessageShower.ShowMessageError(message);
         }
 
         public virtual void ShowErrorMessage(Exception exception)
         {
-            HandleError.ShowMessageError(exception.Message);
+            MessageShower.ShowMessageError(exception.Message);
         }
 
         public virtual void ShowInfoMessage(string message)
         {
-            HandleError.ShowMessageInfo(message);
+            MessageShower.ShowMessageInfo(message);
+        }
+
+        public virtual bool ShowDialogMessage(string message)
+        {
+            return MessageShower.ShowYesNoMessage(message);
         }
     }
 }

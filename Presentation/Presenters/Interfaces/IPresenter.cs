@@ -11,6 +11,7 @@ namespace Presentation.Presenters.Interfaces
     {
         void ShowErrorMessage(string message);
         void ShowInfoMessage(string message);
+        bool ShowDialogMessage(string message);
         void Show();
         void Close();
     }

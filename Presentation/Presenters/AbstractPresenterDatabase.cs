@@ -33,7 +33,16 @@ namespace Presentation.Presenters
             return _repository.GetAll();
         }
         public abstract void OnCreateClick();
-        public abstract void OnDeleteClick();
+        public virtual void OnDeleteClick()
+        {
+            var IDs = (_view as IViewDatabase<T>).SelectedRowID();
+            foreach (var id in IDs)
+            {
+                _repository.DeleteById(id);
+            }
+
+            OnLoadDataClick();
+        }
         public virtual void OnLoadDataClick()
         {
             (_view as IViewDatabase<T>).FillingTable(_repository.GetAll());
