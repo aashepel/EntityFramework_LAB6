@@ -32,10 +32,7 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button_loadData = new System.Windows.Forms.Button();
             this.button_delete = new System.Windows.Forms.Button();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button_save = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,11 +48,6 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ID,
-            this.Name,
-            this.dataGridViewTextBoxColumn1,
-            this.Email});
             this.dataGridView1.Location = new System.Drawing.Point(12, 41);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 82;
@@ -82,48 +74,26 @@
             this.button_delete.Text = "Delete selected";
             this.button_delete.UseVisualStyleBackColor = true;
             // 
-            // ID
+            // button_save
             // 
-            this.ID.Frozen = true;
-            this.ID.HeaderText = "ID";
-            this.ID.MinimumWidth = 10;
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            // 
-            // Name
-            // 
-            this.Name.Frozen = true;
-            this.Name.HeaderText = "Группа";
-            this.Name.MinimumWidth = 10;
-            this.Name.Name = "Name";
-            this.Name.ReadOnly = true;
-            this.Name.Width = 200;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.Frozen = true;
-            this.dataGridViewTextBoxColumn1.HeaderText = "Имя";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 150;
-            // 
-            // Email
-            // 
-            this.Email.Frozen = true;
-            this.Email.HeaderText = "Email";
-            this.Email.Name = "Email";
-            this.Email.ReadOnly = true;
-            this.Email.Width = 150;
+            this.button_save.Location = new System.Drawing.Point(690, 67);
+            this.button_save.Name = "button_save";
+            this.button_save.Size = new System.Drawing.Size(104, 23);
+            this.button_save.TabIndex = 4;
+            this.button_save.Text = "Save";
+            this.button_save.UseVisualStyleBackColor = true;
             // 
             // CuratorView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(795, 450);
+            this.Controls.Add(this.button_save);
             this.Controls.Add(this.button_delete);
             this.Controls.Add(this.button_loadData);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button_create);
+            this.Name = "CuratorView";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
@@ -135,9 +105,6 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button_loadData;
         private System.Windows.Forms.Button button_delete;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Email;
+        private System.Windows.Forms.Button button_save;
     }
 }

@@ -18,8 +18,7 @@ namespace Presentation.Presenters.Curators
 {
     public class MainCuratorPresenter : AbstractPresenterDatabase<Curator>, ICuratorPresenter
     {
-        IGroupRepository _groupRepository = new GroupRepository();
-        public MainCuratorPresenter(ICuratorView view, IRepository<Curator> repository) : base(view, repository)
+        public MainCuratorPresenter(IViewDatabase<Curator> view, IRepository<Curator> repository) : base(view, repository)
         {
         }
 
@@ -32,9 +31,9 @@ namespace Presentation.Presenters.Curators
             base.OnCreateClick();
         }
 
-        public override void OnLoadDataClick()
+        public override void OnUpdateClick()
         {
-            (_view as ICuratorView).FillingTable(_repository.GetAll(), _groupRepository.GetAll());
+            throw new NotImplementedException();
         }
     }
 }

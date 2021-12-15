@@ -10,7 +10,7 @@ namespace Core.Repositories.Interfaces
     public interface IGroupRepository : IRepository<Group>
     {
         uint CountStudentsInGroup(int groupId);
-        decimal AvgAgeStudents(int curatorId);
+        double AvgAgeStudents(int curatorId);
         Group GetByName(string name);
     }
 }

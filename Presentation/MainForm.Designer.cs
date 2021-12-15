@@ -32,6 +32,9 @@ namespace EntityFramework_LAB6
             this.button_students = new System.Windows.Forms.Button();
             this.button_groups = new System.Windows.Forms.Button();
             this.button_curators = new System.Windows.Forms.Button();
+            this.button_students_of_group = new System.Windows.Forms.Button();
+            this.button_curatorNameOfStudent = new System.Windows.Forms.Button();
+            this.button_avgAge = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button_students
@@ -64,11 +67,44 @@ namespace EntityFramework_LAB6
             this.button_curators.UseVisualStyleBackColor = true;
             this.button_curators.Click += new System.EventHandler(this.button_curators_Click);
             // 
+            // button_students_of_group
+            // 
+            this.button_students_of_group.Location = new System.Drawing.Point(12, 56);
+            this.button_students_of_group.Name = "button_students_of_group";
+            this.button_students_of_group.Size = new System.Drawing.Size(113, 23);
+            this.button_students_of_group.TabIndex = 3;
+            this.button_students_of_group.Text = "StudentsOfGroup";
+            this.button_students_of_group.UseVisualStyleBackColor = true;
+            this.button_students_of_group.Click += new System.EventHandler(this.button_students_of_group_Click);
+            // 
+            // button_curatorNameOfStudent
+            // 
+            this.button_curatorNameOfStudent.Location = new System.Drawing.Point(12, 114);
+            this.button_curatorNameOfStudent.Name = "button_curatorNameOfStudent";
+            this.button_curatorNameOfStudent.Size = new System.Drawing.Size(156, 23);
+            this.button_curatorNameOfStudent.TabIndex = 4;
+            this.button_curatorNameOfStudent.Text = "Curator name of Student";
+            this.button_curatorNameOfStudent.UseVisualStyleBackColor = true;
+            this.button_curatorNameOfStudent.Click += new System.EventHandler(this.button_curatorNameOfStudent_Click);
+            // 
+            // button_avgAge
+            // 
+            this.button_avgAge.Location = new System.Drawing.Point(12, 85);
+            this.button_avgAge.Name = "button_avgAge";
+            this.button_avgAge.Size = new System.Drawing.Size(113, 23);
+            this.button_avgAge.TabIndex = 5;
+            this.button_avgAge.Text = "Avg age of group";
+            this.button_avgAge.UseVisualStyleBackColor = true;
+            this.button_avgAge.Click += new System.EventHandler(this.button_avgAge_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(304, 166);
+            this.Controls.Add(this.button_avgAge);
+            this.Controls.Add(this.button_curatorNameOfStudent);
+            this.Controls.Add(this.button_students_of_group);
             this.Controls.Add(this.button_curators);
             this.Controls.Add(this.button_groups);
             this.Controls.Add(this.button_students);
@@ -83,6 +119,9 @@ namespace EntityFramework_LAB6
         private System.Windows.Forms.Button button_students;
         private System.Windows.Forms.Button button_groups;
         private System.Windows.Forms.Button button_curators;
+        private System.Windows.Forms.Button button_students_of_group;
+        private System.Windows.Forms.Button button_curatorNameOfStudent;
+        private System.Windows.Forms.Button button_avgAge;
     }
 }
 

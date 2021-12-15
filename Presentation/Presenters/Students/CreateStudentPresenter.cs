@@ -20,42 +20,14 @@ namespace Presentation.Presenters.Students
             : base(view, repository)
         {
             _groupRepository = groupRepository;
-
-            view.AgeChange += OnAgeChanged;
-            view.NameChange += OnNameChanged;
-            view.GroupChange += (string nameGroup) =>  OnGroupChanged(nameGroup);
             view.SetComboBoxGroups(_groupRepository.GetAll());
         }
 
-        public override bool IsValidParams()
+        protected override void GetEntityValueFromForm()
         {
-            return true;
-        }
-
-        public void OnAgeChanged(uint age)
-        {
-            _entity.Age = age;
-        }
-
-        public void OnNameChanged(string name)
-        {
-            _entity.Name = name;
-        }
-
-        public void OnGroupChanged(string nameGroup)
-        {
-            _nameGroup = nameGroup;
-        }
-
-        protected override void OnCreateClick()
-        {
-            _entity.GroupId = _groupRepository.GetByName(_nameGroup).Id;
-            base.OnCreateClick();
-        }
-
-        protected override void ClearAllFields()
-        {
-            (_view as ICreateView<Student>).ClearAllFields();
+            _entity.Age = (_view as ICreateStudentView).Age;
+            _entity.Name = (_view as ICreateStudentView).NameEntity;
+            _entity.GroupId = (_view as ICreateStudentView).GroupId;
         }
     }
 }

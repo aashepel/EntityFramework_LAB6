@@ -10,5 +10,10 @@ namespace Presentation.Views.Curators.Interfaces
 {
     public interface ICreateCuratorView : ICreateView<Curator>
     {
+        public int? GroupId { get; }
+        public string NameEntity { get; }
+        public string Email { get; }
+
+        public void SetGroupComboBox(ICollection<Group> groups);
     }
 }

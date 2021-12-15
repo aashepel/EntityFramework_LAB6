@@ -10,6 +10,6 @@ namespace Presentation.Views.Students.Interfaces
 {
     public interface IStudentView : IViewDatabase<Student>
     {
-        
+        void FillingTable(ICollection<Student> students, ICollection<Group> groups);
     }
 }

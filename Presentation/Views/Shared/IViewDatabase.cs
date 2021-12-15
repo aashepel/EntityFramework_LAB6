@@ -12,9 +12,8 @@ namespace Presentation.Interfaces
     {
         event Action CreateClick;
         event Action DeleteClick;
-        event Action UpdateClick;
         event Action LoadClick;
-        void FillingTable(ICollection<T> entites);
+        event Action SaveClick;
         List<int> SelectedRowID();
     }
 }

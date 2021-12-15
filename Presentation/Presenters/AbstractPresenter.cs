@@ -18,8 +18,6 @@ namespace Presentation.Presenters
             _view = view ?? throw new ArgumentNullException(nameof(view));
         }
 
-        protected virtual IView View => _view;
-
         public virtual void Close()
         {
             _view.Close();

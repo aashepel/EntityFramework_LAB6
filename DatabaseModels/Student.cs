@@ -16,7 +16,8 @@ namespace DatabaseModels
         public override int Id {  get; set; }
 
         [Required]
-        public int GroupId { get; set; }
+        [NotNull]
+        public int? GroupId { get; set; }
 
         public virtual Group Group { get; set; }
 
@@ -26,5 +27,13 @@ namespace DatabaseModels
         [Required]
         [Range(0, 100)]
         public uint Age { get; set; }
+
+        public override bool IsValid()
+        {
+            if (GroupId == null)
+                return false;
+
+            return true;
+        }
     }
 }

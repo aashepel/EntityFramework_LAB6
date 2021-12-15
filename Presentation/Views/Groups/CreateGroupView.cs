@@ -16,11 +16,11 @@ namespace Presentation.Views.Groups
         public CreateGroupView()
         {
             InitializeComponent();
-            textBox_name.TextChanged += (s, e) => NameChange?.Invoke(textBox_name.Text);
             button_create.Click += (s, e) => CreateClick?.Invoke();
         }
 
-        public event Action<string> NameChange;
+        public string NameEntity => textBox_name.Text;
+
         public event Action CreateClick;
 
         public void ClearAllFields()

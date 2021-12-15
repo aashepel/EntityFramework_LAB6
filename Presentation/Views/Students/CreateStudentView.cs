@@ -15,39 +15,23 @@ namespace Presentation.Views.Students
 {
     public partial class CreateStudentView : Form, ICreateStudentView
     {
+        public uint Age => (uint)numericUpDown_age.Value;
+        public int? GroupId => comboBox_idGroup.SelectedItem == null ? null : (comboBox_idGroup.SelectedItem as Group).Id;
+        public string NameEntity => textBox_name.Text;
+
         public CreateStudentView()
         {
             InitializeComponent();
-
             button_create.Click += (o, e) => CreateClick?.Invoke();
-            textBox_name.TextChanged += (o, e) => NameChange?.Invoke(textBox_name.Text);
-            numericUpDown_age.ValueChanged += (o, e) => AgeChange?.Invoke((uint)numericUpDown_age.Value);
-            comboBox_idGroup.TextChanged += (o, e) => GroupChange?.Invoke(comboBox_idGroup.SelectedItem as string);
         }
 
         public event Action CreateClick;
-        public event Action<uint> AgeChange;
-        public event Action<string> NameChange;
-        public event Action<string> GroupChange;
-
-        void IView.Show()
-        {
-            this.Show();
-        }
-
-        void IView.Close()
-        {
-            this.Close();
-        }
 
         public void SetComboBoxGroups(ICollection<Group> groups)
         {
-            comboBox_idGroup.Items.Clear();
-            var groupsString = groups.Select(p => p.Name).ToArray();
-            foreach (var group in groupsString)
-            {
-                comboBox_idGroup.Items.Add(group);
-            }
+            comboBox_idGroup.DataSource = groups;
+            comboBox_idGroup.DisplayMember = "Name";
+            comboBox_idGroup.ValueMember = "Id";
         }
 
         public void ClearAllFields()

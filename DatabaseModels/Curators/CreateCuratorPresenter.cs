@@ -23,7 +23,7 @@ namespace Presentation.Presenters.Curators
         protected override void GetEntityValueFromForm()
         {
             _entity.GroupId = (_view as ICreateCuratorView).GroupId;
-            _entity.Name = (_view as ICreateCuratorView).NameEntity;
+            _entity.Name = (_view as ICreateCuratorView).Name;
             _entity.Email = (_view as ICreateCuratorView).Email;
         }
     }

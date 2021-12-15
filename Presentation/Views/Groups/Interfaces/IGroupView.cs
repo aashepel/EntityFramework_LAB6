@@ -10,5 +10,6 @@ namespace Presentation.Views.Groups.Interfaces
 {
     public interface IGroupView : IViewDatabase<Group>
     {
+        void FillingTable(ICollection<Group> entites);
     }
 }

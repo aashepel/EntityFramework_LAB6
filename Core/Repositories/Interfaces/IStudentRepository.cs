@@ -9,6 +9,6 @@ namespace Core.Repositories.Interfaces
 {
     public interface IStudentRepository : IRepository<Student>
     {
-        public string GetCuratorNameOfStudent(int studentId);
+        public string? GetCuratorNameOfStudent(int studentId);
     }
 }

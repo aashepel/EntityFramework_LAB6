@@ -20,6 +20,7 @@ namespace Presentation.Presenters
 {
     public class MainStudentPresenter : AbstractPresenterDatabase<Student>, IStudentPresenter
     {
+        private readonly IGroupRepository _groupRepos = new GroupRepository();
         public MainStudentPresenter(IStudentView view, IStudentRepository repository) : base(view, repository)
         {
             
@@ -35,9 +36,9 @@ namespace Presentation.Presenters
             base.OnCreateClick();
         }
 
-        public override void OnUpdateClick()
+        public override void OnLoadDataClick()
         {
-            
+            (_view as IStudentView).FillingTable(_repository.GetAll(), _groupRepos.GetAll());
         }
     }
 }

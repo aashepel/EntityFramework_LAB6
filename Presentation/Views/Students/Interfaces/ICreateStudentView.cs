@@ -10,9 +10,9 @@ namespace Presentation.Views.Students.Interfaces
 {
     public interface ICreateStudentView : ICreateView<Student>
     {
-        event Action<uint> AgeChange;
-        event Action<string> NameChange;
-        event Action<string> GroupChange;
+        public uint Age { get; }
+        public string NameEntity { get; }
+        public int? GroupId { get; }
 
         void SetComboBoxGroups(ICollection<Group> groups);
     }

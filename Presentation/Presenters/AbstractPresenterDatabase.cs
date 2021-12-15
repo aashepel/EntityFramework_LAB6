@@ -26,8 +26,8 @@ namespace Presentation.Presenters
 
             view.CreateClick += OnCreateClick;
             view.DeleteClick += OnDeleteClick;
-            view.UpdateClick += OnUpdateClick;
             view.LoadClick += OnLoadDataClick;
+            view.SaveClick += OnSaveClick;
         }
         public virtual void OnCreateClick()
         {
@@ -44,10 +44,11 @@ namespace Presentation.Presenters
 
             OnLoadDataClick();
         }
-        public virtual void OnLoadDataClick()
+        public abstract void OnLoadDataClick();
+
+        public void OnSaveClick()
         {
-            (_view as IViewDatabase<T>).FillingTable(_repository.GetAll());
+            _repository.Save();
         }
-        public abstract void OnUpdateClick();
     }
 }

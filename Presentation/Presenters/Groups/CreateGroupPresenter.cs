@@ -14,22 +14,12 @@ namespace Presentation.Presenters.Groups
     {
         public CreateGroupPresenter(ICreateGroupView view, IRepository<Group> repository) : base(view, repository)
         {
-            view.NameChange += OnNameChanged;
+
         }
 
-        public override bool IsValidParams()
+        protected override void GetEntityValueFromForm()
         {
-            return true;
-        }
-
-        public void OnNameChanged(string name)
-        {
-            _entity.Name = name;
-        }
-
-        protected override void ClearAllFields()
-        {
-            (_view as ICreateView<Group>).ClearAllFields();
+            _entity.Name = (_view as ICreateGroupView).NameEntity;
         }
     }
 }

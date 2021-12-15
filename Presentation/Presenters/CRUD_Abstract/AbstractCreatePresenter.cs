@@ -13,14 +13,16 @@ namespace Presentation.Presenters
 {
     public abstract class AbstractCreatePresenter<T> : AbstractCRUDPresenter<T>, ICreatePresenter<T> where T : BaseEntity, new()
     {
-        protected T _entity = new();
-
         public AbstractCreatePresenter(ICreateView<T> view, IRepository<T> repository) : base(view, repository)
         {
             view.CreateClick += OnCreateClick;
         }
 
-        protected abstract void ClearAllFields();
+        protected virtual void ClearAllFields()
+        {
+            (_view as ICreateView<T>).ClearAllFields();
+        }
+        protected abstract void GetEntityValueFromForm();
         protected virtual void OnSucceedCreate(string message)
         {
             ShowInfoMessage(message);
@@ -31,13 +33,14 @@ namespace Presentation.Presenters
         {
             try
             {
+                GetEntityValueFromForm();
                 if (IsValidParams())
                 {
                     _repository.Create(_entity);
                     OnSucceedCreate("Успешно добавлено");
                 }
                 else
-                    ShowInfoMessage("Ошибка при заполнении");
+                    ShowErrorMessage("Ошибка при заполнении");
             }
             catch (Exception ex)
             {

@@ -23,7 +23,7 @@ namespace Core.Repositories
 
         public override Curator GetById(int id)
         {
-            return _context.Set<Curator>().Include(p => p.Group).FirstOrDefault(p => p.Id == id);
+            return _context.Set<Curator>().FirstOrDefault(p => p.Id == id);
         }
     }
 }

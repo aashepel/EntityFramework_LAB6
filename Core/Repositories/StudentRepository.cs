@@ -18,16 +18,19 @@ namespace Core.Repositories
 
         public override ICollection<Student> GetAll()
         {
-            var students = _context.Set<Student>().ToList();
-            return _context.Set<Student>().Include(p => p.Group).ToList();
+            var students = _context.Set<Student>().Include(p => p.Group).ToList();
+            return students;
         }
 
-        public string GetCuratorNameOfStudent(int studentId)
+        public string? GetCuratorNameOfStudent(int studentId)
         {
             var student = _context.Set<Student>().FirstOrDefault();
             if (student == null) throw new ArgumentNullException(nameof(student));
             var curator = _context.Set<Curator>().FirstOrDefault(p => p.GroupId == student.GroupId);
-            return curator?.Name;
+            if (curator == null)
+                return null;
+            else
+                return curator.Name;
         }
     }
 }

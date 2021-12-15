@@ -10,6 +10,6 @@ namespace Presentation.Views.Groups.Interfaces
 {
     public interface ICreateGroupView : ICreateView<Group>
     {
-        event Action<string> NameChange;
+        public string NameEntity { get; }
     }
 }

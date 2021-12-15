@@ -61,5 +61,10 @@ namespace Core
                 throw new ArgumentNullException(nameof(entity));
             }
         }
+
+        public virtual void Save()
+        {
+            _context.SaveChanges();
+        }
     }
 }

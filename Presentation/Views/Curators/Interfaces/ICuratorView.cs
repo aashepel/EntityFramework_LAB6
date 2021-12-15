@@ -10,5 +10,6 @@ namespace Presentation.Views.Curators.Interfaces
 {
     public interface ICuratorView : IViewDatabase<Curator>
     {
+        public void FillingTable(ICollection<Curator> entites, ICollection<Group> groups);
     }
 }

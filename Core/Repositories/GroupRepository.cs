@@ -29,12 +29,20 @@ namespace Core.Repositories
             return (uint)students.Count();
         }
 
-        public decimal AvgAgeStudents(int curatorId)
+        public double AvgAgeStudents(int curatorId)
         {
             var curator = _context.Set<Curator>().FirstOrDefault(p => p.Id == curatorId);
             if (curator == null) throw new ArgumentNullException(nameof(curator));
             var students = _context.Set<Student>().Where(p => p.GroupId == curator.GroupId).ToList();
-            return (decimal)Enumerable.Average((IEnumerable<int>)students.Select(p => p.Age));
+
+
+            if (students.Count() == 0)
+                return 0;
+            else
+            {
+                int sum = Enumerable.Sum(students.Select(p => Convert.ToInt32(p.Age)));
+                return sum / students.Count();
+            }
         }
 
         public Group GetByName(string name)

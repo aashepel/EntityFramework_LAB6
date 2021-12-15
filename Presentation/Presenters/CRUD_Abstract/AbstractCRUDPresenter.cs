@@ -12,6 +12,7 @@ namespace Presentation.Presenters.CRUD
 {
     public abstract class AbstractCRUDPresenter<T> : AbstractPresenter, ICRUDPresenter where T : BaseEntity, new()
     {
+        protected T _entity = new();
         protected readonly IRepository<T> _repository;
 
         public AbstractCRUDPresenter(IView view, IRepository<T> repository) : base(view)
@@ -19,6 +20,9 @@ namespace Presentation.Presenters.CRUD
             _repository = repository ?? throw new ArgumentNullException(nameof(repository));
         }
 
-        public abstract bool IsValidParams();
+        public virtual bool IsValidParams()
+        {
+            return _entity.IsValid();
+        }
     }
 }

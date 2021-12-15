@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Toolkit;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -16,7 +17,8 @@ namespace DatabaseModels
         public override int Id { get; set; }
 
         [Required]
-        public int GroupId { get; set; }
+        [NotNull]
+        public int? GroupId { get; set; }
 
         public virtual Group Group {  get; set; }
 
@@ -30,10 +32,16 @@ namespace DatabaseModels
 
         public override bool IsValid()
         {
+            if (GroupId == null)
+                return false;
+
             if (Name == null)
                 return false;
 
             if (Email == null)
+                return false;
+
+            if (!StringExtensions.IsEmail(Email))
                 return false;
 
             if (Name.Length > 150 || Name.Length < 2)

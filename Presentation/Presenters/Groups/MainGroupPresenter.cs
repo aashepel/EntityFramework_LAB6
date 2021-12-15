@@ -31,9 +31,9 @@ namespace Presentation.Presenters.Groups
             base.OnCreateClick();
         }
 
-        public override void OnUpdateClick()
+        public override void OnLoadDataClick()
         {
-            throw new NotImplementedException();
+            (_view as IGroupView).FillingTable(_repository.GetAll());
         }
     }
 }

@@ -66,7 +66,6 @@
             this.Controls.Add(this.button_create);
             this.Controls.Add(this.textBox_name);
             this.Controls.Add(this.label_name);
-            this.Name = "CreateGroupView";
             this.Text = "CreateGroupView";
             this.ResumeLayout(false);
             this.PerformLayout();
